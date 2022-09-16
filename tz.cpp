@@ -325,9 +325,6 @@ namespace detail
 struct undocumented {explicit undocumented() = default;};
 }
 
-#ifndef _MSC_VER
-static_assert(min_year <= max_year, "Configuration error");
-#endif
 
 static std::unique_ptr<TZ_DB> init_tzdb();
 

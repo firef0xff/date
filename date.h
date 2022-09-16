@@ -74,42 +74,12 @@ namespace date
 #  define ONLY_C_LOCALE 0
 #endif
 
-#if defined(_MSC_VER) && (!defined(__clang__) || (_MSC_VER < 1910))
-// MSVC
-#  if _MSC_VER < 1910
+
 //   before VS2017
 #    define CONSTDATA const
 #    define CONSTCD11
 #    define CONSTCD14
 #    define NOEXCEPT _NOEXCEPT
-#  else
-//   VS2017 and later
-#    define CONSTDATA constexpr const
-#    define CONSTCD11 constexpr
-#    define CONSTCD14 constexpr
-#    define NOEXCEPT noexcept
-#  endif
-
-#elif defined(__SUNPRO_CC) && __SUNPRO_CC <= 0x5150
-// Oracle Developer Studio 12.6 and earlier
-#  define CONSTDATA constexpr const
-#  define CONSTCD11 constexpr
-#  define CONSTCD14
-#  define NOEXCEPT noexcept
-
-#elif __cplusplus >= 201402
-// C++14
-#  define CONSTDATA constexpr const
-#  define CONSTCD11 constexpr
-#  define CONSTCD14 constexpr
-#  define NOEXCEPT noexcept
-#else
-// C++11
-#  define CONSTDATA constexpr const
-#  define CONSTCD11 constexpr
-#  define CONSTCD14
-#  define NOEXCEPT noexcept
-#endif
 
 #ifndef HAS_VOID_T
 #  if __cplusplus >= 201703
